@@ -8,7 +8,7 @@ const expenseEl = document.getElementById('expense');
 const API_BASE = 'http://backend:3000';
 
 async function fetchTransactions() {
-  try {kjg
+  try {kjgbagashebat
     const res = await fetch(`${API_BASE}/transactions`);
     return await res.json();
   } catch (err) {
