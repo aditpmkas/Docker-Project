@@ -89,7 +89,7 @@ app.post('/login', async (req, res) => {
 
 
 app.get('/home', requireLogin, (req, res) => {
-  res.render('home');
+  res.render('home', { username: req.session.user });
 });
 
 

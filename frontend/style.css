@@ -1,3 +1,33 @@
+/* --- Elegant Hello Username Styling --- */
+.hello-username-elegant {
+  position: absolute;
+  top: 32px;
+  left: 48px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #eaeaea;
+  background: rgba(30, 34, 54, 0.85);
+  padding: 0.45rem 1.5rem 0.45rem 1rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px 0 rgba(102,126,234,0.08);
+  z-index: 10;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(102,126,234,0.10);
+  transition: background 0.2s;
+}
+.hello-username-elegant span {
+  font-weight: 600;
+  color: #b3baff;
+  margin-left: 0.3rem;
+}
+@media (max-width: 768px) {
+  .hello-username-elegant {
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem 0.3rem 0.6rem;
+    left: 10px;
+    top: 10px;
+  }
+}
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 * {
