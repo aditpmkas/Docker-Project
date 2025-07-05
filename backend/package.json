@@ -12,7 +12,10 @@
   "author": "dandit",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0",
-    "cors": "^2.8.5"
+    "express-session": "^1.18.1",
+    "hbs": "^4.2.0",
+    "mongoose": "^8.16.1"
   }
 }

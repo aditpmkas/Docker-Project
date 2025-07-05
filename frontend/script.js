@@ -1,3 +1,5 @@
+// Copy of Finance Tracker's script.js for frontend templates
+// Place your JS here or copy from ../script.js
 const form = document.getElementById('transaction-form');
 const table = document.getElementById('transaction-table');
 const balanceEl = document.getElementById('balance');
