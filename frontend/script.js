@@ -5,6 +5,7 @@ const table = document.getElementById('transaction-table');
 const balanceEl = document.getElementById('balance');
 const incomeEl = document.getElementById('income');
 const expenseEl = document.getElementById('expense');
+const amountInput = document.getElementById('amount');
 
 const API_BASE = 'http://localhost:3000'; // atau ganti ke 'http://backend:3000' jika di dalam container
 
@@ -55,10 +56,22 @@ async function render() {
   });
 }
 
+amountInput.addEventListener('input', function(e) {
+  // Ambil hanya digit angka
+  let value = this.value.replace(/\D/g, '');
+  if (value) {
+    // Format dengan titik setiap 3 digit
+    this.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  } else {
+    this.value = '';
+  }
+});
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const description = document.getElementById('description').value.trim();
-  const amount = parseFloat(document.getElementById('amount').value);
+  // Ambil value amount, hilangkan titik sebelum di-parse
+  const amount = parseFloat(document.getElementById('amount').value.replace(/\./g, ''));
   const type = document.getElementById('type').value;
 
   if (!description || isNaN(amount) || !type) {
