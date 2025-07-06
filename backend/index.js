@@ -13,8 +13,8 @@ const PORT = 3000;
 const { User, Transaction } = require('./mongodb');
 
 
-const templatePath = path.join(__dirname, '../frontend');
-app.use(cors());
+const templatePath = path.join(__dirname, 'views');
+app.set('views', templatePath);app.use(cors());
 app.use(express.json());
 app.use(session({
   secret: 'finance-tracker-secret',
