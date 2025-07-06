@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -13,7 +11,7 @@ const PORT = 3000;
 const { User, Transaction } = require('./mongodb');
 
 
-const templatePath = path.join(__dirname, '../frontend');
+const templatePath = path.join(__dirname, 'frontend');
 app.use(cors());
 app.use(express.json());
 app.use(session({
@@ -25,7 +23,7 @@ app.set('view engine', 'hbs');
 app.set('views', templatePath);
 app.use(express.urlencoded({ extended: false }));
 // Serve static files for Finance Tracker (css, js)
-app.use('/static', express.static(path.join(__dirname, '../frontend')));
+app.use('/static', express.static(path.join(__dirname, 'frontend')));
 
 // Middleware untuk cek login
 function requireLogin(req, res, next) {

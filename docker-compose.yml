@@ -3,10 +3,14 @@ version: "3.8"
 
 services:
   backend:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     ports:
       - "3000:3000"
     restart: unless-stopped
+    depends_on:
+      - mongo
 
   frontend:
     build: ./frontend
@@ -15,3 +19,14 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
