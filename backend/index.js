@@ -51,16 +51,16 @@ app.get('/signup', (req, res) => {
 
 
 app.post('/signup', async (req, res) => {
-  const { name, password } = req.body;
+  const { name, email, password } = req.body;
   try {
-    const existingUser = await User.findOne({ name });
+    const existingUser = await User.findOne({ $or: [ { name }, { email } ] });
     if (existingUser) {
       return res.send(`
-        <h2>Username already taken.</h2>
+        <h2>Username or email already taken.</h2>
         <button onclick=\"window.history.back()\">Back</button>
       `);
     }
-    const newUser = await User.create({ name, password });
+    const newUser = await User.create({ name, email, password });
     console.log('User created:', newUser);
     // Hapus semua transaksi lama user jika ada (reset akun)
     await Transaction.deleteMany({ username: name });
@@ -75,15 +75,17 @@ app.post('/signup', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   try {
-    const check = await User.findOne({ name: req.body.name });
-    if (check && check.password === req.body.password) {
-      req.session.user = check.name;
+    const loginInput = req.body.login;
+    const password = req.body.password;
+    const user = await User.findOne({ $or: [ { name: loginInput }, { email: loginInput } ] });
+    if (user && user.password === password) {
+      req.session.user = user.name;
       res.redirect('/home');
     } else {
-      res.send('wrong password');
+      res.render('login', { loginError: 'Wrong username/email or password', loginValue: loginInput });
     }
   } catch {
-    res.send('wrong details');
+    res.render('login', { loginError: 'Login error' });
   }
 });
 

@@ -1,3 +1,17 @@
+/* --- Login Error Message --- */
+.login-error-message {
+  background: #fa709a;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px 0 rgba(250,112,154,0.10);
+  letter-spacing: 0.5px;
+  animation: fadeIn 0.3s;
+}
 /* --- Auth Panel Styling --- */
 .auth-bg {
   min-height: 100vh;
